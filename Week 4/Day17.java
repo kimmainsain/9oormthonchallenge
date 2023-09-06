@@ -11,7 +11,7 @@ class Main {
 	static boolean visited[];
 	static Queue<Integer> qu;
 	static ArrayList<Integer> list[];
-	static Set<Integer> component;
+	static ArrayList<Integer> component;
 	
 	public static void main(String[] args) throws Exception {
 		st = new StringTokenizer(br.readLine());
@@ -30,7 +30,7 @@ class Main {
 			list[b].add(a);
 		}
 		double max = -2147483648;
-		Set<Integer> keep = new HashSet();
+		ArrayList<Integer> keep = new ArrayList();
 		for (int i = 1; i <= n; i++) {
 			if (visited[i]) continue;
 			if (list[i] == null) continue;
@@ -45,10 +45,9 @@ class Main {
 				max = cal;
 			}
 		}
-		List<Integer> sortedList = new ArrayList<>(keep);
-		Collections.sort(sortedList);
-		for (int i = 0; i < sortedList.size(); i++) {
-			sb.append(sortedList.get(i) + " ");
+		Collections.sort(keep);
+		for (int i = 0; i < keep.size(); i++) {
+			sb.append(keep.get(i) + " ");
 		}
 		System.out.println(sb);
 	}
@@ -56,7 +55,7 @@ class Main {
 	private static void bfs(int start) {
 		qu.add(start);
 		circuit = 0;
-		component = new HashSet();
+		component = new ArrayList();
 		while (!qu.isEmpty()) {
 			int now = qu.poll();
 			if (visited[now]) continue;
@@ -67,9 +66,9 @@ class Main {
 				int value = list[now].get(i);
 				if (visited[value]) continue;
 				circuit++;
-				component.add(value);
 				qu.add(value);
 			}
 		}
 	}
 }
+
