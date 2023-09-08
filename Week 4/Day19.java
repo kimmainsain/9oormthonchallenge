@@ -5,11 +5,10 @@ class Main {
 	static StringTokenizer st;
 	static StringBuilder sb;
 	
-	static ArrayList<ArrayList<Integer>> dfsList;
-	static ArrayList<Integer> set;
 	static ArrayList<Integer> list[];
-	static int n, m, s, e;
+	static Queue<int[]> qu;
 	static boolean visited[];
+	static int n, m, s, e;
 	
 	public static void main(String[] args) throws Exception {
 		st = new StringTokenizer(br.readLine());
@@ -19,8 +18,6 @@ class Main {
 		s = Integer.parseInt(st.nextToken());
 		e = Integer.parseInt(st.nextToken());
 		list = new ArrayList[n + 1];
-		visited = new boolean[n + 1];
-		dfsList = new ArrayList();
 		for (int i = 0; i < m; i++) {
 			st = new StringTokenizer(br.readLine());
 			int a = Integer.parseInt(st.nextToken());
@@ -30,40 +27,31 @@ class Main {
 			list[a].add(b);
 			list[b].add(a);
 		}
-		set = new ArrayList();
-		dfs(s);
-		Collections.sort(dfsList, (o1, o2) -> (o1.size() - o2.size()));
-		loop : for (int i = 1; i <= n; i++) {
-			if (i == s || i == e) {
-				sb.append(-1 + "\n");
-				continue;
-			}
-			for (int j = 0; j < dfsList.size(); j++) {
-				if (!dfsList.get(j).contains(i)) {
-					sb.append(dfsList.get(j).size() + "\n");
-					continue loop;
-				}
-			}
-			sb.append(-1 + "\n");
+		for (int i = 1; i <= n; i++) {
+			visited = new boolean[n + 1];
+			visited[i] = true;
+			bfs();
 		}
 		System.out.println(sb);
 	}
 	
-	private static void dfs(int value) {
-		set.add(value);
-		visited[value] = true;
-		if (value == e) {
-			dfsList.add(new ArrayList(set));
-			// System.out.println(set.toString());
-			return;
+	private static void bfs() {
+		qu = new ArrayDeque();
+		qu.add(new int [] {s, 1});
+		while(!qu.isEmpty()) {
+			int now[] = qu.poll();
+			if (now[0] == e) {
+				sb.append(now[1] + "\n");
+				return;
+			}
+			if (visited[now[0]]) continue;
+			visited[now[0]] = true;
+			for (int i = 0; i < list[now[0]].size(); i++) {
+				int next = list[now[0]].get(i);
+				if (visited[next]) continue;
+				qu.add(new int [] {next, now[1] + 1});
+			}
 		}
-		for (int i = 0; i < list[value].size(); i++) {
-			int now = list[value].get(i);
-			if (visited[now]) continue;
-			visited[now] = true;
-			dfs(now);
-			visited[now] = false;
-			set.remove(set.size() - 1);
-		}
+		sb.append(-1 + "\n");
 	}
 }
