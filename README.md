@@ -1,5 +1,9 @@
 # 9oormthonchallenge
 
+# 2023.09.23 구름 챌린지 1위 수상
+
+![Untitled](./img/9oorm.jpg)
+
 ## Day 1 ~ Day 2
 
 **[코드 정리](https://velog.io/@kimmainsain/%EA%B5%AC%EB%A6%84%ED%86%A4-%EC%B1%8C%EB%A6%B0%EC%A7%80-Week1-Day-1-Day2)**
