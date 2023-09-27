@@ -4,6 +4,9 @@
 
 ![Untitled](./img/9oorm.jpg)
 
+# [후기](https://velog.io/@kimmainsain/%EA%B5%AC%EB%A6%84%ED%86%A4-%EC%B1%8C%EB%A6%B0%EC%A7%80-%EA%B5%AC%EB%A6%84%ED%86%A4-%EC%B4%9D-%EA%B2%B0%EC%82%B0)
+
+
 ## Day 1 ~ Day 2
 
 **[코드 정리](https://velog.io/@kimmainsain/%EA%B5%AC%EB%A6%84%ED%86%A4-%EC%B1%8C%EB%A6%B0%EC%A7%80-Week1-Day-1-Day2)**
